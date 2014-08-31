@@ -2,20 +2,49 @@
 <html>
     <head>
         <title>Docker Jenkins Slave</title>
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        <link rel="stylesheet" href="/static/css/kube.min.css" />
+        <link rel="stylesheet" href="/static/css/styles.css" />
     </head>
 
     <body>
 
-    <h1>Docker jenkins slave generator</h1>
-    <h2>Basic templates</h2>
-    <a href="https://github.com/rrader/docker-jenkins-slave">github</a>
+    <div class="units-container">
+        <h1>Docker jenkins slave generator</h1>
 
-    <h2>Generate your own template</h2>
-    <form action="/generate/" method="post">
-        {% csrf_token %}
-        {{ form }}
-        <input type="submit" value="Get Dockerfile" />
-    </form>
+        <div class="units-row">
+            <div class="unit-30 block">
+                <h2>1. Use basic Dockerfile</h2>
+                <p>Go to <a href="https://github.com/rrader/docker-jenkins-slave">github</a> and follow instructions</p>
+                <p><a href="http://antigluk.blogspot.com/2013/10/docker-jenkins.html">Guide [Russian]</a></p>
+            </div>
+            <div class="unit-10">
+                <h1>OR</h1>
+            </div>
+            <div class="unit-60 block">
+                <h2>2. Generate your own Dockerfile</h2>
+
+                <form method="post">
+                  <table>
+                    {% csrf_token %}
+                    {% for field in form %}
+                      <tr>
+                        <th>{{field.label_tag}}</th>
+                        <td>
+                          {{ field.errors }}
+                          {{ field }}
+                        </td>
+                      </tr>
+                    {% endfor %}
+                  </table>
+                  <hr/>
+                  <button type="submit" class="btn-green width-50">Get my Dockerfile</button>
+                </form>
+            </div>
+        </div>
+    </div>
 
     </body>
 </html>
