@@ -5,5 +5,17 @@
     </head>
 
     <body>
+
+    <h1>Docker jenkins slave generator</h1>
+    <h2>Basic templates</h2>
+    <a href="https://github.com/rrader/docker-jenkins-slave">github</a>
+
+    <h2>Generate your own template</h2>
+    <form action="/generate/" method="post">
+        {% csrf_token %}
+        {{ form }}
+        <input type="submit" value="Get Dockerfile" />
+    </form>
+
     </body>
 </html>
